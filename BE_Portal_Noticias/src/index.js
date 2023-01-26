@@ -6,7 +6,7 @@ const express_session = require('express-session');
 const fs = require('fs');
 
 // Constantes
-const PORT=  5000;
+const PORT=  8080;
 
 // Initializaciones
 const app = express();
@@ -17,13 +17,13 @@ app.set('port', process.env.PORT || PORT);
 
 // middlewares
 /* app.use(morgan(':method :url :status :date')); */
-/* app.use((req, res, next) => {
+app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
-}); */
+});
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(express_session({ secret: 'SECRET' })); // Sesión secreta

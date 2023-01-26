@@ -40,10 +40,10 @@ router.get('/:page/:num',  async(req, res) => {
 
 /* Envia una noticia*/
 function getOneNews(req, res) {
-    let page = req.params.page;
-    let num = req.params.num;
-    let pos = parseInt((NEWS_PER_PAGE * page) - NEWS_PER_PAGE + num,10);
-    res.send({ article: news[pos] });
+    let page = parseInt(req.params.page);
+    let num = parseInt(req.params.num);
+    let pos = (NEWS_PER_PAGE * page) - NEWS_PER_PAGE + num;
+    res.send(news[pos]);
 }
 
 /* Envia un conjunto de noticias para mostrar en una página*/
