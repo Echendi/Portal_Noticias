@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+/* Obtiene, clasifica y envía los parámetros del clima */
 router.get('/', async (req, res) => {
     fetch('https://api.openweathermap.org/data/2.5/weather?q=cali&appid=0042240f966a384b384ba818545ecf3e&lang=es&units=metric')
         .then(response => response.json())
@@ -13,7 +14,6 @@ router.get('/', async (req, res) => {
             weather.humidity = json.main.humidity;
             res.send(weather);
         });
-     
 });
 
 module.exports = router;
