@@ -23,7 +23,6 @@ app.use((req, res, next) => {
     res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
 });
-app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(express_session({ secret: 'SECRET' })); // Sesión secreta
@@ -42,6 +41,8 @@ app.use('/authentication',require('./routes/authentication'));
 app.use('/log',require('./routes/log'));
 app.use('/news',require('./routes/news'));
 app.use('/newsList',require('./routes/newsList'));
+app.use('/weather',require('./routes/weather'));
+
 
 // Publico
 app.use(express.static(path.join(__dirname, 'public')));
