@@ -9,7 +9,7 @@ const PORT=  5000;
 
 // Initializaciones
 const app = express();
-require('./lib/passport');
+/* require('./lib/passport'); */
 
 // Configuraciones
 app.set('port', process.env.PORT || PORT);
@@ -37,7 +37,11 @@ app.use((req, res, next) => {
 });
 
 // Rutas
-app.use(require('./routes/authentication'));
+app.use(require('./routes'));
+app.use('/authentication',require('./routes/authentication'));
+app.use('/log',require('./routes/log'));
+app.use('/news',require('./routes/news'));
+app.use('/newsList',require('./routes/newsList'));
 
 // Publico
 app.use(express.static(path.join(__dirname, 'public')));
